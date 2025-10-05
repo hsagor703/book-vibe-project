@@ -7,6 +7,8 @@ import Home from "./Pages/Home.jsx";
 import ListBooks from "./Pages/ListBooks.jsx";
 import PagesToRead from "./Pages/PagesToRead.jsx";
 import SubApp from "./SubApp.jsx";
+import { MoonLoader } from "react-spinners";
+import BookDetails from "./Components/BookDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +16,13 @@ const router = createBrowserRouter([
     Component: SubApp,
     children: [
       {
+        index: true,
         path: "/",
+        // errorElement: <h1>page not found</h1>,
         Component: Home,
+        hydrateFallbackElement: (
+          <MoonLoader className="mx-auto my-50" color="#32d2b5" />
+        ),
         loader: () => fetch(`booksData.json`),
       },
       {
@@ -25,6 +32,11 @@ const router = createBrowserRouter([
       {
         path: "/pagesToRead",
         Component: PagesToRead,
+      },
+      {
+        path: "/bookDetails/:id",
+        loader: () => fetch(`booksData.json`),
+        Component: BookDetails,
       },
     ],
   },
