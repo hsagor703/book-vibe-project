@@ -3,6 +3,10 @@ import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import { addFromLocalStore } from "../LocalStore/LocalStore";
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
+
 const BookDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
@@ -27,8 +31,14 @@ const BookDetails = () => {
   const [tag1, tag2] = tags;
 
   const handleMarkToRead = (id) => {
-    addFromLocalStore(id)
-  }
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success",
+    });
+
+    addFromLocalStore(id);
+  };
   return (
     <div>
       <div className="border-2 border-gray-300 p-6 rounded-xl md:flex  justify-center gap-10 mb-3">
@@ -84,8 +94,15 @@ const BookDetails = () => {
             </span>
 
             <div className="mt-3">
-              <button onClick={() => handleMarkToRead(id)} className="btn mr-3 font-bold">Mark To Read</button>
-              <button className="btn border-0 text-white bg-[#50B1C9]">Add To Wishlist</button>
+              <button
+                onClick={() => handleMarkToRead(id)}
+                className="btn mr-3 font-bold"
+              >
+                Mark To Read
+              </button>
+              <button className="btn border-0 text-white bg-[#50B1C9]">
+                Add To Wishlist
+              </button>
             </div>
           </div>
         </div>

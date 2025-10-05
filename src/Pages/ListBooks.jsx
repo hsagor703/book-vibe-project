@@ -9,7 +9,6 @@ const ListBooks = () => {
   const books = useLoaderData();
   const [bookList, setBookList] = useState([]);
   const [sort, setSort] = useState('')
-  console.log(sort);
 
   useEffect(() => {
     const getDataFromLocalStore = getFromLocalStore();
