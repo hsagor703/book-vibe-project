@@ -1,15 +1,7 @@
-import { Star } from "lucide-react";
 import React from "react";
-import { useLoaderData, useParams } from "react-router";
-import { addFromLocalStore } from "../LocalStore/LocalStore";
-
-const BookDetails = () => {
-  const { id } = useParams();
-  const data = useLoaderData();
-  const findData = data?.find(
-    (singleData) => singleData?.bookId === Number(id)
-  );
-
+import { Star } from "lucide-react";
+import { Link } from "react-router";
+const Book = ({ singleBook }) => {
   const {
     author,
     category,
@@ -22,15 +14,12 @@ const BookDetails = () => {
     publisher,
     totalPages,
     yearOfPublishing,
-  } = findData;
-
+  } = singleBook;
   const [tag1, tag2] = tags;
-
-  const handleMarkToRead = (id) => {
-    addFromLocalStore(id)
-  }
   return (
     <div>
+      
+
       <div className="border-2 border-gray-300 p-6 rounded-xl md:flex  justify-center gap-10 mb-3">
         <div className="bg-gray-300 p-20 rounded-xl md:w-1/2">
           <img className="md:h-100 mx-auto" src={image} alt="" />
@@ -84,8 +73,10 @@ const BookDetails = () => {
             </span>
 
             <div className="mt-3">
-              <button onClick={() => handleMarkToRead(id)} className="btn mr-3 font-bold">Mark To Read</button>
-              <button className="btn border-0 text-white bg-[#50B1C9]">Add To Wishlist</button>
+              <button className="btn mr-3 font-bold">Mark To Read</button>
+              <button className="btn border-0 text-white bg-[#50B1C9]">
+                Add To Wishlist
+              </button>
             </div>
           </div>
         </div>
@@ -94,4 +85,4 @@ const BookDetails = () => {
   );
 };
 
-export default BookDetails;
+export default Book;

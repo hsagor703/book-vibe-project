@@ -4,7 +4,6 @@ import AllBooks from "./AllBooks";
 
 const Books = () => {
   const books = useLoaderData();
-  console.log(books);
   return (
     <div>
       <h1 className="text-center text-6xl mb-8 playfair">Books</h1>

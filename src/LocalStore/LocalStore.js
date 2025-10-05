@@ -18,4 +18,4 @@ const addFromLocalStore = (id) => {
         localStorage.setItem("readList", addData)
     }
 };
-export {addFromLocalStore}
+export {addFromLocalStore, getFromLocalStore}
